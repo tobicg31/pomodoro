@@ -1,0 +1,104 @@
+body {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(196, 238, 178);
+}
+
+#app {
+  border-radius: 1rem;
+  justify-items: center;
+  background-color: rgb(243, 233, 233);
+  width: 500px;
+  margin: 0 auto;
+  border: solid 1px #ccc;
+  padding: 20px;
+}
+
+#time {
+  text-align: center;
+  padding: 20px 0;
+}
+#time #value {
+  font-size: 48px;
+  font-weight: bolder;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: solid 1px #ccc;
+  width: 300px;
+}
+button,
+input[type="submit"] {
+  border: none;
+  background-color: #1d4c7b;
+  color: white;
+  padding: 10px;
+  border-radius: 1rem;
+}
+
+#tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+.task {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.task .completed {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.done {
+  display: inline-block;
+  padding: 5px;
+  background-color: #ccc;
+}
+
+.config {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.config input {
+  width: 60px;
+  padding: 5px;
+  text-align: center;
+}
+.config button {
+  background-color: #65ac75;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 1rem;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  background-color: #f5f2c2;
+  margin: 1rem;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0d;
+}
