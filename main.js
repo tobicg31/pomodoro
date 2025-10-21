@@ -6,9 +6,9 @@ let current = null;
 let statusApp = "stop";
 
 const audios = {
-  1: 'musica1.mp4',
-  2: 'musica2.mp4',
-  3: 'musica3.mp4'
+  1: 'musica1.mp3',
+  2: 'musica2.mp3',
+  3: 'musica3.mp3'
 }
 
 const bAdd = document.querySelector("#bAdd");
