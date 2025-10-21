@@ -9,6 +9,8 @@ const bAdd = document.querySelector("#bAdd");
 const itTask = document.querySelector("#itTask");
 const form = document.querySelector("#form");
 document.getElementById('year').textContent = new Date().getFullYear();
+const audio = document.getElementById('musica');
+
 
 renderTasks();
 renderTime();
@@ -34,16 +36,23 @@ function createTask(value) {
 
 function renderTasks() {
   const html = tasks.map((task) => {
+    let buttonHTML = "";
+
+    if (task.completed) {
+      buttonHTML = "<span class='done'>Listo</span>";
+    } else if (task.id === current) {
+      buttonHTML = "<span class='in-progress'>En progreso</span>";
+    } else {
+      buttonHTML = `<button class="start-button" data-id="${task.id}">Iniciar</button>`;
+    }
+
     return `
-        <div class="task">
-        <div class="completed">${
-          task.completed
-            ? "<span class='done'>Listo</span>"
-            : `<button class="start-button" data-id="${task.id}">Iniciar</button></div>`
-        }
-            <div class="title">${task.title}</div>
-        </div>`;
+      <div class="task">
+        <div class="completed">${buttonHTML}</div>
+        <div class="title">${task.title}</div>
+      </div>`;
   });
+
   const tasksContainer = document.querySelector("#tasks");
   tasksContainer.innerHTML = html.join("");
 
@@ -58,6 +67,7 @@ function renderTasks() {
   });
 }
 
+
 const config = document.getElementById('config');
 const p = document.getElementById('texto');
 
@@ -69,6 +79,9 @@ function startButtonHandler(id) {
   document.querySelector("#time #taskName").textContent = tasks[taskId].title;
   config.classList.add('hidden');
   p.classList.add('hidden'); 
+  audio.src = "./videoplayback.mp4";
+  audio.currentime = Math.floor(Math.random() * 661);
+  audio.play();
   timer = setInterval(() => {
     timerHandler(id);
   }, 1000);
@@ -99,6 +112,9 @@ function startBreak() {
 function timerBreakHandler() {
   time--;
   renderTime();
+  config.classList.remove('hidden');
+  p.classList.remove('hidden'); 
+  audio.src = "";
   if (time === 0) {
     clearInterval(timerBreak);
     current = null;
