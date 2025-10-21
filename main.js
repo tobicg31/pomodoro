@@ -5,11 +5,16 @@ let timerBreak = null;
 let current = null;
 let statusApp = "stop";
 
+const audios = {
+  1: 'musica1.mp4',
+  2: 'musica2.mp4',
+  3: 'musica3.mp4'
+}
+
 const bAdd = document.querySelector("#bAdd");
 const itTask = document.querySelector("#itTask");
 const form = document.querySelector("#form");
 document.getElementById('year').textContent = new Date().getFullYear();
-const audio = document.getElementById('musica');
 
 
 renderTasks();
@@ -79,9 +84,12 @@ function startButtonHandler(id) {
   document.querySelector("#time #taskName").textContent = tasks[taskId].title;
   config.classList.add('hidden');
   p.classList.add('hidden'); 
-  audio.src = "./videoplayback.mp4";
-  audio.currentime = Math.floor(Math.random() * 661);
+
+  const audio = document.getElementById('musica');
+  audio.src = audios[Math.floor(Math.random() * 3) + 1];
+  audio.currentime = Math.floor(Math.random() * 1201);
   audio.play();
+  
   timer = setInterval(() => {
     timerHandler(id);
   }, 1000);
