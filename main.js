@@ -75,6 +75,7 @@ function renderTasks() {
 
 const config = document.getElementById('config');
 const p = document.getElementById('texto');
+const audio = document.getElementById('musica');
 
 function startButtonHandler(id) {
   time = workTime;
@@ -85,7 +86,7 @@ function startButtonHandler(id) {
   config.classList.add('hidden');
   p.classList.add('hidden'); 
 
-  const audio = document.getElementById('musica');
+  
   audio.src = audios[Math.floor(Math.random() * 3) + 1];
   audio.currentime = Math.floor(Math.random() * 1201);
   audio.play();
@@ -113,8 +114,9 @@ function markComplete(id) {
 
 function startBreak() {
   time = breakTime;
-  document.querySelector("#time #taskName").textContent = "Break";
+  document.querySelector("#time #taskName").textContent = "Descanso";
   timerBreak = setInterval(timerBreakHandler, 1000);
+  
 }
 
 function timerBreakHandler() {
@@ -125,11 +127,14 @@ function timerBreakHandler() {
   audio.src = "";
   if (time === 0) {
     clearInterval(timerBreak);
+    timerBreak = null;
+    timer = null;
     current = null;
     document.querySelector("#time #taskName").textContent = "";
     renderTime();
-    configDiv.style.display = "flex";
+    config.style.display = "flex";
   }
+
 }
 
 function renderTime() {
